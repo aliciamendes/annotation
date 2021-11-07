@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.annotation.ui.Fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_editAnnotationFragment"
+            app:destination="@id/editAnnotationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_createAnnotationFragment"
+            app:destination="@id/createAnnotationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAnnotationFragment"
+        android:name="com.example.annotation.ui.Fragments.CreateAnnotationFragment"
+        android:label="fragment_create_annotation"
+        tools:layout="@layout/fragment_create_annotation" >
+        <action
+            android:id="@+id/action_createAnnotationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editAnnotationFragment"
+        android:name="com.example.annotation.ui.Fragments.EditAnnotationFragment"
+        android:label="fragment_edit_annotation"
+        tools:layout="@layout/fragment_edit_annotation" >
+        <action
+            android:id="@+id/action_editAnnotationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>
