@@ -1,14 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.Fragments.CreateAnnotationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="20dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/icon_back_create_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/descroption_back_button"
+                android:src="@drawable/icon_back"
+                app:backgroundTint="#FFFFFF"
+                app:elevation="0dp" />
+
+            <TextView
+                android:id="@+id/title_screen"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="58dp"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:text="@string/new_annotation"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edit_text_title"
+            style="@style/input_style"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+
+            android:hint="@string/title_note"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/edit_text_content"
+            style="@style/input_style"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
+            android:gravity="start"
+            android:inputType="textMultiLine"
+            android:hint="@string/content_note"
+            android:padding="10dp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:height="@dimen/margin_bottom_big"
+        android:background="@drawable/button_bg"
+        android:fontFamily="@font/bold"
+        android:text="@string/button_text_save"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </FrameLayout>

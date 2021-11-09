@@ -10,4 +10,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="plus">+</string>
+    <string name="button_text_save">Salvar</string>
+    <string name="title_note">Título</string>
+    <string name="content_note">Conteúdo</string>
+    <string name="new_annotation">Nova anotação</string>
+    <string name="descroption_back_button">Botão de voltar</string>
+    <string name="edit_annotation" >Editar anotação</string>
+    <string name="dialog_delete_annotation">Deseja deletar essa anotação?</string>
+    <string name="text_btn_save_alter">Salvar alteração</string>
 </resources>
