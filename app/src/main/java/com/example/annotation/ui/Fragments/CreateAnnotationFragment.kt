@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.annotation.Model.Notes
+import com.example.annotation.R
 import com.example.annotation.ViewModel.NotesViewModel
 import com.example.annotation.databinding.FragmentCreateAnnotationBinding
 import java.util.*
@@ -45,7 +47,9 @@ class CreateAnnotationFragment : Fragment() {
 
         viewModel.addNotes(data)
 
-        Toast.makeText(context, "AIAI", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Nota Criada com Sucesso!", Toast.LENGTH_SHORT).show()
+
+        Navigation.findNavController(it!!).navigate(R.id.action_createAnnotationFragment_to_homeFragment)
 
     }
 

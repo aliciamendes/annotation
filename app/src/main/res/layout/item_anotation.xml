@@ -20,17 +20,19 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Exemplo ajkhsk akjhsda kajhsda kajhsd "
-                android:textSize="16dp"
                 android:fontFamily="@font/bold"
+                android:id="@+id/notesTitle"
+                android:text="Title"
+                android:textSize="17sp"
                 android:maxLines="1"
                 android:textColor="@color/black"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/notesContent"
                 android:text="Exemplo ajkhsk akjhsda kajhsda kajhsd jkfsdh skjhdf skjhdf kjshdf kjshbndf ksjhdf kjdsh me qias oijehs jhgyfdrsa"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:fontFamily="@font/regular"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/black"/>
@@ -38,6 +40,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/notesDate"
                 android:text="23 March 2021"
                 android:textSize="14dp"
                 android:fontFamily="@font/regular"
