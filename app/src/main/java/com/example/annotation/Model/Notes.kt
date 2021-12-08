@@ -1,6 +1,6 @@
 package com.example.annotation.Model
 
-import android.text.Editable
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

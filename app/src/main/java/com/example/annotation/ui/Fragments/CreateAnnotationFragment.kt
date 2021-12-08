@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.annotation.Model.Notes
 import com.example.annotation.R
 import com.example.annotation.ViewModel.NotesViewModel
@@ -28,10 +29,12 @@ class CreateAnnotationFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentCreateAnnotationBinding.inflate(layoutInflater, container, false)
 
-        binding.buttonCreate.setOnClickListener{
+        binding.buttonCreate.setOnClickListener {
             createNotes(it)
         }
-
+        binding.backButton.setOnClickListener { view ->
+            Navigation.findNavController(view).navigate(R.id.action_createAnnotationFragment_to_homeFragment)
+        }
         return binding.root
     }
 

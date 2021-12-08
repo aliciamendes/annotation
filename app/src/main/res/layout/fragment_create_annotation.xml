@@ -18,7 +18,7 @@
             android:orientation="horizontal" android:layout_marginBottom="20dp">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/icon_back_create_note"
+                android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/descroption_back_button"

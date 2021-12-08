@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.fragmentContainerView)
         setupActionBarWithNavController(navController)
         supportActionBar?.hide()
+
     }
 
     override fun onNavigateUp(): Boolean {
