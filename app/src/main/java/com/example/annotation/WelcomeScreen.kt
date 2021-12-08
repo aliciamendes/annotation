@@ -11,8 +11,6 @@ class WelcomeScreen : AppCompatActivity() {
         setContentView(R.layout.activity_welcome_screen)
         supportActionBar?.hide()
         findViewById<Button>(R.id.button_continue).setOnClickListener {
-            //Add nome do usuário no localStorage
-            //navegar para main activiti e matar essa tela pra sempre
             addNameUserStorage()
         }
     }

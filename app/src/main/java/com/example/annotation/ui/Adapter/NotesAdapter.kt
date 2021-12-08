@@ -4,9 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.annotation.Model.Notes
 import com.example.annotation.databinding.ItemAnotationBinding
+import com.example.annotation.ui.Fragments.HomeFragmentDirections
 
 class NotesAdapter(val requireContext: Context, val notesList: List<Notes>) : RecyclerView.Adapter<NotesAdapter.notesViewHolder>() {
     class notesViewHolder(val binding: ItemAnotationBinding) : RecyclerView.ViewHolder(binding.root)
@@ -27,6 +29,10 @@ class NotesAdapter(val requireContext: Context, val notesList: List<Notes>) : Re
         holder.binding.notesContent.text = data.content
         holder.binding.notesDate.text = data.date
 
+        holder.binding.root.setOnClickListener{
+            val action = HomeFragmentDirections.actionHomeFragmentToEditAnnotationFragment(data)
+            Navigation.findNavController(it).navigate(action)
+        }
 
     }
 

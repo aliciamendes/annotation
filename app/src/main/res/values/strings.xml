@@ -5,9 +5,8 @@
     <string name="welcome">Bem-vindo ao Annotation</string>
     <string name="to_start_say_your_name">Para começar, nos diga seu nome</string>
     <string name="ilustration_description">Ilustração de bem-vindo</string>
-    <string name="example_name">Ex: Alícia</string>
+    <string name="example_name">Ex: João</string>
     <string name="button_text_continue">Continuar</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="plus">+</string>
     <string name="button_text_save">Salvar</string>

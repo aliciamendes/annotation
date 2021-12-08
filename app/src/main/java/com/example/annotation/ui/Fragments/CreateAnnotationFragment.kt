@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.example.annotation.Model.Notes
 import com.example.annotation.R
 import com.example.annotation.ViewModel.NotesViewModel
@@ -24,8 +23,7 @@ class CreateAnnotationFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle? ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCreateAnnotationBinding.inflate(layoutInflater, container, false)
 
