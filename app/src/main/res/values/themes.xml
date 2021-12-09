@@ -11,4 +11,13 @@
 
     </style>
 
+    <style name="BottomSheetStyle" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Modal</item>
+    </style>
+
+    <style name="Modal" parent="Theme.Design.BottomSheetDialog">
+        <item name="android:background">@drawable/delete_sheet</item>
+    </style>
+
+
 </resources>
