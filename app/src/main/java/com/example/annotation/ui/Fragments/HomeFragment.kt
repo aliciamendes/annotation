@@ -1,3 +1,5 @@
+@file:Suppress("PackageName")
+
 package com.example.annotation.ui.Fragments
 
 import android.os.Bundle
@@ -8,11 +10,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.annotation.R
 import com.example.annotation.ViewModel.NotesViewModel
 import com.example.annotation.databinding.FragmentHomeBinding
 import com.example.annotation.ui.Adapter.NotesAdapter
-
 
 class HomeFragment : Fragment() {
 
@@ -23,7 +25,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
@@ -33,11 +34,9 @@ class HomeFragment : Fragment() {
                 binding.rcvAllNotes.adapter = NotesAdapter(requireContext(), notesList)
             })
 
-
         binding.buttonAddNote.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_createAnnotationFragment)
         }
-
 
         return binding.root
     }

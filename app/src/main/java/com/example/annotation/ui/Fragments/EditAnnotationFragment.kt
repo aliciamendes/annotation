@@ -2,7 +2,6 @@ package com.example.annotation.ui.Fragments
 
 import android.os.Bundle
 import android.text.format.DateFormat
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +10,16 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.annotation.Model.Notes
 import com.example.annotation.R
 import com.example.annotation.ViewModel.NotesViewModel
 import com.example.annotation.databinding.FragmentEditAnnotationBinding
+import com.example.annotation.ui.Adapter.NotesAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.*
 
@@ -33,6 +35,8 @@ class EditAnnotationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+//        var view: FragmentEditAnnotationBinding
+
         binding = FragmentEditAnnotationBinding.inflate(layoutInflater, container, false)
 
         binding.editTextTitle.setText(oldNotes.data.title)
@@ -47,22 +51,24 @@ class EditAnnotationFragment : Fragment() {
 
         binding.buttonDeleteNotes.setOnClickListener{
             deleteNotes(it)
+            Navigation.findNavController(it!!).navigate(R.id.action_editAnnotationFragment_to_homeFragment)
         }
 
         return binding.root
     }
 
     private fun deleteNotes(it: View?) {
-        val bottomSheet: BottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetStyle)
+        val bottomSheet = BottomSheetDialog(requireContext(), R.style.BottomSheetStyle)
         bottomSheet.setContentView(R.layout.dialog_delete_annotation)
 
         val textViewYes = bottomSheet.findViewById<TextView>(R.id.dialog_yes_delete)
         val textViewNo = bottomSheet.findViewById<TextView>(R.id.dialog_no_delete)
 
-        textViewYes?.setOnClickListener { view ->
+        textViewYes?.setOnClickListener {
             viewModel.deleteNotes(oldNotes.data.id!!)
             bottomSheet.dismiss()
-            Navigation.findNavController(view).navigate(R.id.action_editAnnotationFragment_to_homeFragment)
+
+            Toast.makeText(requireContext(), "Nota Deletada com Sucesso!", Toast.LENGTH_SHORT).show()
         }
 
         textViewNo?.setOnClickListener {

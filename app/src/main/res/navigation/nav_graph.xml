@@ -12,10 +12,14 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_editAnnotationFragment"
-            app:destination="@id/editAnnotationFragment" />
+            app:destination="@id/editAnnotationFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"/>
         <action
             android:id="@+id/action_homeFragment_to_createAnnotationFragment"
-            app:destination="@id/createAnnotationFragment" />
+            app:destination="@id/createAnnotationFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"/>
     </fragment>
 
     <fragment
@@ -25,9 +29,10 @@
         tools:layout="@layout/fragment_create_annotation" >
         <action
             android:id="@+id/action_createAnnotationFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"/>
     </fragment>
-
     <fragment
         android:id="@+id/editAnnotationFragment"
         android:name="com.example.annotation.ui.Fragments.EditAnnotationFragment"
@@ -35,7 +40,9 @@
         tools:layout="@layout/fragment_edit_annotation" >
         <action
             android:id="@+id/action_editAnnotationFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"/>
         <argument
             android:name="data"
             app:argType="com.example.annotation.Model.Notes" />
