@@ -17,4 +17,5 @@
     <string name="dialog_delete_annotation">Deseja deletar essa anotação?</string>
     <string name="text_btn_save_alter">Salvar alteração</string>
     <string name="description_button_delete">Description Button Delete</string>
+    <string name="view_annotations">Veja suas anotações</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.annotation.ui.Fragments
 
+import android.location.*
 import android.os.Bundle
 import android.text.format.DateFormat
 import androidx.fragment.app.Fragment
@@ -33,18 +34,21 @@ class CreateAnnotationFragment : Fragment() {
         binding.backButton.setOnClickListener { view ->
             Navigation.findNavController(view).navigate(R.id.action_createAnnotationFragment_to_homeFragment)
         }
+
         return binding.root
     }
 
     private fun createNotes(it: View?){
         val title = binding.editTextTitle.text.toString()
         val content = binding.editTextContent.text.toString()
-        val notesDate: CharSequence = DateFormat.format("MMMM d, yyyy", Date().time)
+        val notesDate: CharSequence = DateFormat.format("d MMM yyyy", Date().time)
+        var localizationNotes = "sdasd"
 
         val data = Notes(null,
             title = title,
             content = content,
-            date = notesDate.toString())
+            date = notesDate.toString(),
+            localization = localizationNotes.toString())
 
         viewModel.addNotes(data)
 
@@ -53,6 +57,8 @@ class CreateAnnotationFragment : Fragment() {
         Navigation.findNavController(it!!).navigate(R.id.action_createAnnotationFragment_to_homeFragment)
 
     }
+
+
 
 
 }

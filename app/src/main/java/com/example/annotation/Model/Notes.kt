@@ -12,11 +12,13 @@ class Notes(
     var id: Int ?= null,
     var title: String?,
     var content: String?,
-    var date: String?
+    var date: String?,
+    var localization: String?
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString()
@@ -28,6 +30,7 @@ class Notes(
         parcel.writeString(title)
         parcel.writeString(content)
         parcel.writeString(date)
+        parcel.writeString(localization)
     }
 
     override fun describeContents(): Int {

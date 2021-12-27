@@ -1,5 +1,6 @@
 package com.example.annotation.ui.Fragments
 
+import android.app.Activity
 import android.os.Bundle
 import android.text.format.DateFormat
 import androidx.fragment.app.Fragment
@@ -9,17 +10,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.annotation.Model.Notes
 import com.example.annotation.R
 import com.example.annotation.ViewModel.NotesViewModel
 import com.example.annotation.databinding.FragmentEditAnnotationBinding
-import com.example.annotation.ui.Adapter.NotesAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.*
 
@@ -35,8 +31,6 @@ class EditAnnotationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-//        var view: FragmentEditAnnotationBinding
-
         binding = FragmentEditAnnotationBinding.inflate(layoutInflater, container, false)
 
         binding.editTextTitle.setText(oldNotes.data.title)
@@ -50,14 +44,13 @@ class EditAnnotationFragment : Fragment() {
         }
 
         binding.buttonDeleteNotes.setOnClickListener{
-            deleteNotes(it)
-            Navigation.findNavController(it!!).navigate(R.id.action_editAnnotationFragment_to_homeFragment)
+                deleteNotes()
         }
 
         return binding.root
     }
 
-    private fun deleteNotes(it: View?) {
+    private fun deleteNotes() {
         val bottomSheet = BottomSheetDialog(requireContext(), R.style.BottomSheetStyle)
         bottomSheet.setContentView(R.layout.dialog_delete_annotation)
 
@@ -67,7 +60,7 @@ class EditAnnotationFragment : Fragment() {
         textViewYes?.setOnClickListener {
             viewModel.deleteNotes(oldNotes.data.id!!)
             bottomSheet.dismiss()
-
+            Navigation.findNavController(binding.root).navigate(R.id.action_editAnnotationFragment_to_homeFragment)
             Toast.makeText(requireContext(), "Nota Deletada com Sucesso!", Toast.LENGTH_SHORT).show()
         }
 
@@ -76,13 +69,12 @@ class EditAnnotationFragment : Fragment() {
         }
 
         bottomSheet.show()
-
     }
 
     private fun updateNotes(it: View?) {
         val title = binding.editTextTitle.text.toString()
         val content = binding.editTextContent.text.toString()
-        val notesDate: CharSequence = DateFormat.format("MMMM d, yyyy", Date().time)
+        val notesDate: CharSequence = DateFormat.format("d MMM yyyy", Date().time)
 
         val data = Notes(
             oldNotes.data.id,
@@ -90,7 +82,7 @@ class EditAnnotationFragment : Fragment() {
             content = content,
             date = notesDate.toString())
 
-        // Log.e("@@@@@", "updateNotes: Title: $title  Content: $content" )
+        // Log.e("@@@@@", "updateNotes: Titulo: $title  Conteudso: $content" )
 
         viewModel.updateNotes(data)
 

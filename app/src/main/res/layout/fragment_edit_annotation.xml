@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -24,35 +24,47 @@
                 android:id="@+id/button_back_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:contentDescription="@string/descroption_back_button"
                 android:src="@drawable/icon_back"
                 app:backgroundTint="#FFFFFF"
                 app:elevation="0dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+                tools:layout_editor_absoluteY="0dp" />
 
             <TextView
                 android:id="@+id/title_screen"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="58dp"
                 android:fontFamily="@font/regular"
                 android:gravity="center"
                 android:text="@string/edit_annotation"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button_delete_notes"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toEndOf="@+id/button_back_edit"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/button_delete_notes"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_marginStart="30dp"
+                android:layout_gravity="left"
+                android:layout_marginEnd="16dp"
                 android:contentDescription="@string/description_button_delete"
                 android:src="@drawable/delete_notes"
+
                 app:backgroundTint="#FFF"
                 app:elevation="0dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="0dp" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
             android:id="@+id/edit_text_title"
@@ -73,16 +85,16 @@
             android:layout_marginTop="20dp"
             android:gravity="start"
             android:hint="@string/content_note"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:inputType="textMultiLine"
+
+            />
 
 
     </LinearLayout>
 
     <Button
         android:id="@+id/button_edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -94,5 +106,8 @@
         android:fontFamily="@font/bold"
         android:text="@string/text_btn_save_alter"
         android:textAllCaps="false"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </FrameLayout>
