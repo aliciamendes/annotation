@@ -57,7 +57,6 @@
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/description_button_delete"
                 android:src="@drawable/delete_notes"
-
                 app:backgroundTint="#FFF"
                 app:elevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -87,8 +86,19 @@
             android:hint="@string/content_note"
             android:padding="10dp"
             android:inputType="textMultiLine"
-
             />
+
+        <TextView
+            android:id="@+id/loacation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/medium"
+            android:paddingLeft="10dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="#74767A"
+            android:textSize="12dp" />
 
 
     </LinearLayout>
@@ -97,13 +107,13 @@
         android:id="@+id/button_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
         android:height="@dimen/margin_bottom_big"
         android:background="@drawable/button_bg"
         android:fontFamily="@font/bold"
+        android:layout_gravity="bottom"
         android:text="@string/text_btn_save_alter"
         android:textAllCaps="false"
         android:textSize="24sp"

@@ -1,6 +1,5 @@
 package com.example.annotation.ui.Fragments
 
-import android.app.Activity
 import android.os.Bundle
 import android.text.format.DateFormat
 import androidx.fragment.app.Fragment
@@ -35,16 +34,18 @@ class EditAnnotationFragment : Fragment() {
 
         binding.editTextTitle.setText(oldNotes.data.title)
         binding.editTextContent.setText(oldNotes.data.content)
+        binding.loacation.setText("Criado em: ${oldNotes.data.city}")
 
-        binding.buttonEdit.setOnClickListener{
+        binding.buttonEdit.setOnClickListener {
             updateNotes(it)
         }
-        binding.buttonBackEdit.setOnClickListener{
-            Navigation.findNavController(it!!).navigate(R.id.action_editAnnotationFragment_to_homeFragment)
+        binding.buttonBackEdit.setOnClickListener {
+            Navigation.findNavController(it!!)
+                .navigate(R.id.action_editAnnotationFragment_to_homeFragment)
         }
 
-        binding.buttonDeleteNotes.setOnClickListener{
-                deleteNotes()
+        binding.buttonDeleteNotes.setOnClickListener {
+            deleteNotes()
         }
 
         return binding.root
@@ -60,8 +61,10 @@ class EditAnnotationFragment : Fragment() {
         textViewYes?.setOnClickListener {
             viewModel.deleteNotes(oldNotes.data.id!!)
             bottomSheet.dismiss()
-            Navigation.findNavController(binding.root).navigate(R.id.action_editAnnotationFragment_to_homeFragment)
-            Toast.makeText(requireContext(), "Nota Deletada com Sucesso!", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(binding.root)
+                .navigate(R.id.action_editAnnotationFragment_to_homeFragment)
+            Toast.makeText(requireContext(), "Nota Deletada com Sucesso!", Toast.LENGTH_SHORT)
+                .show()
         }
 
         textViewNo?.setOnClickListener {
@@ -80,15 +83,16 @@ class EditAnnotationFragment : Fragment() {
             oldNotes.data.id,
             title = title,
             content = content,
-            date = notesDate.toString())
-
-        // Log.e("@@@@@", "updateNotes: Titulo: $title  Conteudso: $content" )
+            date = notesDate.toString(),
+            city = oldNotes.data.city
+        )
 
         viewModel.updateNotes(data)
 
         Toast.makeText(requireContext(), "Nota Atualizada com Sucesso!", Toast.LENGTH_SHORT).show()
 
-        Navigation.findNavController(it!!).navigate(R.id.action_editAnnotationFragment_to_homeFragment)
+        Navigation.findNavController(it!!)
+            .navigate(R.id.action_editAnnotationFragment_to_homeFragment)
     }
 
 }
