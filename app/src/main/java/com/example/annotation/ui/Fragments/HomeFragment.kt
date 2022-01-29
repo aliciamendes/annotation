@@ -1,15 +1,16 @@
 package com.example.annotation.ui.Fragments
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,11 @@ import com.example.annotation.ViewModel.UserViewModel
 import com.example.annotation.databinding.FragmentHomeBinding
 import com.example.annotation.ui.Adapter.NotesAdapter
 import java.util.*
+import android.content.pm.PackageManager as PackageManager
+import android.content.pm.PackageInfo
+import android.graphics.Bitmap
+import android.util.Log
+
 
 class HomeFragment : Fragment() {
 
@@ -34,6 +40,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var greetings: String
     private lateinit var nameUser: String
+
+    val REQUEST_CODE = 42
 
     private val viewModel: NotesViewModel by viewModels()
     private val viewModelUser: UserViewModel by viewModels()
@@ -68,8 +76,20 @@ class HomeFragment : Fragment() {
             if (checkCameraHardware()){
                 checkPermissionCamera()
             }
+            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(takePictureIntent, this.REQUEST_CODE)
+
+
         }
         return binding.root
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE && data != null){
+            Log.e("ceta", "onActivityResult: $data", )
+            binding.imageUser.setImageBitmap(data.extras!!.get("data") as Bitmap)
+        }
     }
 
     private fun getNameU(): String {
@@ -83,8 +103,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getTimeCourse(): String {
-        val timeNowInt: Int = DateFormat.format("H", Date().time).toString().toInt()
-        return when (timeNowInt) {
+        return when (DateFormat.format("H", Date().time).toString().toInt()) {
             in 0..12 -> {
                 "Bom dia"
             }
@@ -101,16 +120,18 @@ class HomeFragment : Fragment() {
         return context?.packageManager!!.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     private fun builderNotification(){
         val intent = Intent(requireActivity(), HomeFragment::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
+
         val pendingIntent: PendingIntent = PendingIntent.getActivity(requireContext(), 0, intent, 0)
 
-        val builder = NotificationCompat.Builder(requireContext(), "1")
+        val builder = NotificationCompat.Builder(requireContext(), "123")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Title")
-            .setContentText("Text")
+            .setContentTitle("Annotation")
+            .setContentText("Que tal ver suas anotações?")
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setCategory(NotificationCompat.CATEGORY_CALL)
             .setFullScreenIntent(pendingIntent, true)
@@ -122,6 +143,8 @@ class HomeFragment : Fragment() {
         with(NotificationManagerCompat.from(requireContext())){
             notify(id, builder.build())
         }
+        val x = NotificationManagerCompat.from(requireContext())
+        x.notify(id, builder.build())
     }
 
     private fun createNotificationChannel() {
@@ -131,7 +154,7 @@ class HomeFragment : Fragment() {
             val descriptionText = "channel_description"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
 
-            val channel = NotificationChannel(id.toString(), name, importance).apply {
+            val channel = NotificationChannel("123", name, importance).apply {
                 description = descriptionText
             }
 
