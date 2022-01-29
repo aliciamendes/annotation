@@ -13,9 +13,12 @@
     <string name="content_note">Conteúdo</string>
     <string name="new_annotation">Nova anotação</string>
     <string name="descroption_back_button">Botão de voltar</string>
-    <string name="edit_annotation" >Editar anotação</string>
+    <string name="edit_annotation">Editar anotação</string>
     <string name="dialog_delete_annotation">Deseja deletar essa anotação?</string>
     <string name="text_btn_save_alter">Salvar alteração</string>
     <string name="description_button_delete">Description Button Delete</string>
     <string name="view_annotations">Veja suas anotações</string>
+    <string name="button_get_photo">Button</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

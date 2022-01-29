@@ -40,6 +40,7 @@ class CreateAnnotationFragment : Fragment() {
             checkPermission()
         }
 
+
         binding.backButton.setOnClickListener { view ->
             Navigation.findNavController(view)
                 .navigate(R.id.action_createAnnotationFragment_to_homeFragment)

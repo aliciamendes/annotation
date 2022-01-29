@@ -52,10 +52,9 @@
 
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageUser"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:contentDescription="TODO"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/user"
                 tools:ignore="MissingConstraints"
