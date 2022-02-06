@@ -1,20 +1,21 @@
 package com.example.annotation.Model
 
+import android.graphics.Bitmap
 import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "User")
-class User (
+class User(
     @PrimaryKey(autoGenerate = true)
-    var id: Int ?= null,
-    var nameUser: String?
+    var id: Int? = null,
+    var nameUser: String?,
 
     ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readString()
+        parcel.readString(),
     ) {
     }
 
@@ -36,4 +37,5 @@ class User (
             return arrayOfNulls(size)
         }
     }
+
 }

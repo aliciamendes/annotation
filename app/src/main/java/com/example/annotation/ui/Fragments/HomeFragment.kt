@@ -40,6 +40,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var greetings: String
     private lateinit var nameUser: String
+    private lateinit var photoUser: Bitmap
 
     val REQUEST_CODE = 42
 
@@ -74,12 +75,11 @@ class HomeFragment : Fragment() {
 
         binding.imageUser.setOnClickListener{
             if (checkCameraHardware()){
-                checkPermissionCamera()
+                if (checkPermissionCamera()){
+                    val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivityForResult(takePictureIntent, this.REQUEST_CODE)
+                }
             }
-            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(takePictureIntent, this.REQUEST_CODE)
-
-
         }
         return binding.root
     }
@@ -87,7 +87,6 @@ class HomeFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE && data != null){
-            Log.e("ceta", "onActivityResult: $data", )
             binding.imageUser.setImageBitmap(data.extras!!.get("data") as Bitmap)
         }
     }
@@ -96,10 +95,12 @@ class HomeFragment : Fragment() {
         return viewModelUser.getName()
     }
 
-    private fun checkPermissionCamera(){
+    private fun checkPermissionCamera(): Boolean {
         if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-         ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.CAMERA), 0)
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.CAMERA), 0)
+            return false
         }
+        return true
     }
 
     private fun getTimeCourse(): String {

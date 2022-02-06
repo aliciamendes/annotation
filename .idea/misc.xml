@@ -63,8 +63,8 @@
         <entry key="..\:/Users/genar/Desktop/annotation/app/src/main/res/layout/activity_welcome_screen.xml" value="0.2" />
         <entry key="..\:/Users/genar/Desktop/annotation/app/src/main/res/layout/dialog_delete_annotation.xml" value="0.25" />
         <entry key="..\:/Users/genar/Desktop/annotation/app/src/main/res/layout/fragment_create_annotation.xml" value="0.29635416666666664" />
-        <entry key="..\:/Users/genar/Desktop/annotation/app/src/main/res/layout/fragment_edit_annotation.xml" value="0.29635416666666664" />
-        <entry key="..\:/Users/genar/Desktop/annotation/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/genar/Desktop/annotation/app/src/main/res/layout/fragment_edit_annotation.xml" value="0.75" />
+        <entry key="..\:/Users/genar/Desktop/annotation/app/src/main/res/layout/fragment_home.xml" value="0.75" />
         <entry key="..\:/Users/genar/Desktop/annotation/app/src/main/res/layout/item_anotation.xml" value="0.75" />
       </map>
     </option>

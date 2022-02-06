@@ -26,10 +26,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:contentDescription="@string/descroption_back_button"
+                android:elevation="0dp"
                 android:src="@drawable/icon_back"
                 app:backgroundTint="#FFFFFF"
                 app:elevation="0dp"
                 app:layout_constraintStart_toStartOf="parent"
+                app:rippleColor="#FFFFFF"
                 tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
                 tools:layout_editor_absoluteY="0dp" />
 
